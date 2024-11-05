@@ -7,21 +7,18 @@ body {
     margin: 0;
     background: url('../assets/fundo.jpg') no-repeat center center fixed; /* Imagem de fundo */
     background-size: cover; /* Faz com que a imagem cubra toda a tela */
-    backdrop-filter: blur(5px); /* Efeito de embaçamento na imagem de fundo */
 }
 
 #app {
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.3); /* Fundo branco semitransparente */
+    border-radius: 10px; /* Bordas arredondadas */
     padding: 20px; /* Espaçamento interno */
-    border-radius: 20px; /* Bordas arredondadas */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra leve */
-    background-color: rgba(255, 255, 255, 0.4); /* Fundo branco com 50% de opacidade */
-    position: relative; /* Necessário para que o conteúdo esteja acima do fundo */
-    z-index: 1; /* Garante que o conteúdo fique acima do fundo embaçado */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
 .logo {
-    width: 200px; /* Aumentado para um tamanho maior */
+    width: 150px;
     margin-bottom: 20px;
 }
 
@@ -32,7 +29,7 @@ input {
 }
 
 button {
-    padding: 10px;
+    padding: 15px; /* Aumenta o padding para tornar o botão maior */
     width: 85%;
     margin: 10px 0;
     background-color: #4CAF50;
@@ -40,6 +37,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    animation: pulse 2s infinite; /* Adiciona o efeito de pulsar */
 }
 
 button:hover {
@@ -56,7 +54,20 @@ button:hover {
     margin-top: 10px;
 }
 
-/* Removido o efeito de embaçamento das telas de login e cadastro */
+/* Estilo para embaçamento */
 .login-screen, .register-screen {
-    /* Efeito de embaçamento não é mais necessário aqui */
+    backdrop-filter: blur(5px); /* Efeito de embaçamento */
+}
+
+/* Efeito de pulsar */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05); /* Aumenta o tamanho no meio da animação */
+    }
+    100% {
+        transform: scale(1);
+    }
 }
