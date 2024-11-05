@@ -5,27 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barbearia - Login e Cadastro</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <!-- Firebase App -->
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"; // Importando o Auth
-
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCfTgr7zZKs9jhHJ7DhittDeILWLNy8bf8",
-            authDomain: "emails-107af.firebaseapp.com",
-            projectId: "emails-107af",
-            storageBucket: "emails-107af.firebasestorage.app",
-            messagingSenderId: "740408050696",
-            appId: "1:740408050696:web:c6bf3dd41a0a51bae1bdbd",
-            measurementId: "G-PK2YFX9HN9"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app); // Inicializando o Auth
-    </script>
 </head>
 <body>
     <div id="app">
@@ -50,10 +29,10 @@
             <div id="loading" style="display:none;">
                 <img src="assets/loading.gif" alt="Carregando">
             </div>
-            <p id="registerSuccessMessage" style="display:none; color: white;">Cadastro concluído!</p> <!-- Mensagem em branco -->
+            <p id="registerSuccessMessage" style="display:none;">Cadastro concluído!</p>
             <button onclick="showLogin()">Voltar</button>
         </div>
     </div>
-    <script src="scripts/script.js"></script>
+    <script type="module" src="scripts/script.js"></script> <!-- Modificado para type="module" -->
 </body>
 </html>
