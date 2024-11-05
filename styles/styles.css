@@ -6,15 +6,14 @@ body {
     height: 100vh;
     margin: 0;
     background-image: url('assets/background.jpg'); /* Verifique se este caminho está correto */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(3px); /* Desfoque leve para o fundo */
+    background-size: cover; /* Faz com que a imagem cubra toda a tela */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Não repete a imagem */
 }
 
 #app {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo claro para o formulário */
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo claro para o formulário */
     border-radius: 10px; /* Para dar um visual mais agradável */
     padding: 20px; /* Espaçamento interno */
     position: relative; /* Para garantir que o app fique em cima do fundo */
