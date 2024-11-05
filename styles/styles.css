@@ -5,16 +5,17 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: url('../assets/fundo.jpg') no-repeat center center fixed; /* Imagem de fundo */
-    background-size: cover; /* Faz com que a imagem cubra toda a tela */
+    background: url('../assets/fundo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(5px); /* Aplica o desfoque na imagem de fundo */
 }
 
 #app {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.3); /* Fundo branco semitransparente */
-    border-radius: 10px; /* Bordas arredondadas */
-    padding: 20px; /* Espaçamento interno */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
