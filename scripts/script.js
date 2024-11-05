@@ -1,8 +1,3 @@
-// scripts/script.js
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-
-const auth = getAuth();
-
 function showRegister() {
     document.getElementById("loginScreen").style.display = "none";
     document.getElementById("registerScreen").style.display = "block";
@@ -28,19 +23,12 @@ function register() {
     // Exibir símbolo de carregamento
     document.getElementById("loading").style.display = "block";
 
-    // Registrar o usuário com Firebase
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Registro bem-sucedido
-            const user = userCredential.user;
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("registerSuccessMessage").textContent = `Cadastro concluído, ${name}!`;
-            document.getElementById("registerSuccessMessage").style.display = "block";
-        })
-        .catch((error) => {
-            document.getElementById("loading").style.display = "none";
-            alert("Erro ao registrar: " + error.message);
-        });
+    // Simular atraso de 6 segundos
+    setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("registerSuccessMessage").textContent = `Cadastro concluído, ${name}!`;
+        document.getElementById("registerSuccessMessage").style.display = "block";
+    }, 6000);
 }
 
 function validateEmail(email) {
@@ -49,16 +37,6 @@ function validateEmail(email) {
 }
 
 function login() {
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
-
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Login bem-sucedido
-            alert("Login bem-sucedido!");
-            // Você pode redirecionar o usuário ou executar outra lógica aqui
-        })
-        .catch((error) => {
-            alert("Erro ao fazer login: " + error.message);
-        });
+    // Lógica de login (pode adicionar verificação básica)
+    alert("Login simulado! Implementar lógica de autenticação.");
 }
