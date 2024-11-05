@@ -5,16 +5,16 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('assets/fundo.jpg'); /* Certifique-se de que o caminho está correto */
-    background-size: cover; /* Manter isso para cobrir toda a tela */
-    background-position: center; /* Alinha a imagem ao centro */
-    background-repeat: no-repeat; /* Não repetir a imagem */
-    filter: blur(3px); /* Embaçamento */
+    background: url('../assets/fundo.jpg') no-repeat center center fixed; /* Imagem de fundo */
+    background-size: cover; /* Faz com que a imagem cubra toda a tela */
 }
 
 #app {
     text-align: center;
-    background-color: transparent; /* Remove o quadrado branco */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semitransparente */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
 .logo {
@@ -26,8 +26,6 @@ input {
     margin: 10px 0;
     padding: 10px;
     width: 80%;
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo levemente opaco */
-    border-radius: 5px;
 }
 
 button {
@@ -53,4 +51,9 @@ button:hover {
     color: green;
     font-size: 18px;
     margin-top: 10px;
+}
+
+/* Estilo para embaçamento */
+.login-screen, .register-screen {
+    backdrop-filter: blur(5px); /* Efeito de embaçamento */
 }
