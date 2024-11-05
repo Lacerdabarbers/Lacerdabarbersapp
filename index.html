@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia - Login e Cadastro</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Tela de Login -->
+        <div class="login-screen" id="loginScreen">
+            <img src="assets/logo.png" alt="Logo da Barbearia" class="logo">
+            <h2>Login</h2>
+            <input type="email" id="loginEmail" placeholder="E-mail" required>
+            <input type="password" id="loginPassword" placeholder="Senha" required>
+            <button onclick="login()">Entrar</button>
+            <button onclick="showRegister()">Cadastrar</button>
+        </div>
+
+        <!-- Tela de Cadastro -->
+        <div class="register-screen" id="registerScreen" style="display:none;">
+            <h2>Cadastro</h2>
+            <input type="text" id="registerName" placeholder="Nome" required>
+            <input type="email" id="registerEmail" placeholder="E-mail" required>
+            <input type="password" id="registerPassword" placeholder="Senha" required>
+            <button onclick="register()">Registrar</button>
+            <div id="loading" style="display:none;">
+                <img src="assets/loading.gif" alt="Carregando">
+            </div>
+            <p id="registerSuccessMessage" style="display:none;">Cadastro concluído!</p>
+            <button onclick="showLogin()">Voltar</button>
+        </div>
+    </div>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
