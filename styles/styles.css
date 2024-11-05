@@ -5,7 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('assets/background.jpg');
+    background-image: url('assets/background.jpg'); /* Caminho para a imagem de fundo */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,7 +14,9 @@ body {
 
 #app {
     text-align: center;
-    background-color: transparent; /* Remove o quadrado branco */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo claro para o formulário */
+    border-radius: 10px; /* Para dar um visual mais agradável */
+    padding: 20px; /* Espaçamento interno */
 }
 
 .logo {
@@ -26,7 +28,7 @@ input {
     margin: 10px 0;
     padding: 10px;
     width: 80%;
-    background-color: rgba(255, 255, 255, 0.8); /* Ajuste o fundo dos inputs para contraste */
+    background-color: rgba(255, 255, 255, 0.9); /* Ajuste o fundo dos inputs para contraste */
     border-radius: 5px;
 }
 
@@ -50,8 +52,7 @@ button:hover {
 }
 
 #registerSuccessMessage {
-    color:
- green;
+    color: green;
     font-size: 18px;
     margin-top: 10px;
 }
