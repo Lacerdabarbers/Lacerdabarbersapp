@@ -5,26 +5,15 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: url('assets/fundo.jpg') no-repeat center center fixed; /* Imagem de fundo */
-    background-size: cover; /* Faz com que a imagem cubra toda a tela */
-}
-
-#backgroundBlur {
-    position: absolute; /* Posiciona o elemento de fundo */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('assets/fundo.jpg') no-repeat center center fixed; /* Repete a imagem de fundo */
-    background-size: cover; /* Faz com que a imagem cubra toda a tela */
-    filter: blur(5px); /* Aplica o efeito de embaçamento */
-    z-index: -1; /* Coloca o fundo atrás dos outros elementos */
+    background: url('assets/fundo.png') no-repeat center center fixed; /* Adicione aqui o caminho da sua imagem de fundo */
+    background-size: cover; /* Isso garante que a imagem cubra todo o fundo */
 }
 
 #app {
     text-align: center;
-    padding: 20px; /* Espaçamento interno */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semitransparente para o conteúdo */
+    padding: 20px; /* Adiciona um espaço interno */
+    border-radius: 10px; /* Arredonda os cantos */
 }
 
 .logo {
@@ -61,9 +50,4 @@ button:hover {
     color: green;
     font-size: 18px;
     margin-top: 10px;
-}
-
-/* Estilo para embaçamento */
-.login-screen, .register-screen {
-    backdrop-filter: blur(0); /* Desativa o embaçamento para os itens em primeiro plano */
 }
