@@ -5,28 +5,33 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: url('../assets/fundo.jpg') no-repeat center center fixed; /* Imagem de fundo */
-    background-size: cover; /* Cobre toda a tela */
+    background: url('../assets/fundo.jpg') no-repeat center center fixed;
+    background-size: cover;
     backdrop-filter: blur(3px); /* Leve efeito de embaçamento */
 }
 
 #app {
     text-align: center;
     background-color: rgba(255, 255, 255, 0.3); /* Fundo semitransparente branco */
-    border-radius: 10px; /* Bordas arredondadas */
-    padding: 20px; /* Espaçamento interno */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-    width: 150px;
+    width: 180px; /* Aumenta a logo */
     margin-bottom: 20px;
 }
 
 input {
     margin: 10px 0;
-    padding: 10px;
+    padding: 12px;
     width: 80%;
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Bordas leves */
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo mais visível */
+    color: #333;
+    font-size: 16px;
 }
 
 button {
@@ -38,10 +43,25 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    animation: pulse 1.5s infinite; /* Efeito de pulsação */
 }
 
 button:hover {
     background-color: #45a049;
+}
+
+/* Efeito de pulsação para o botão */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 #loading img {
