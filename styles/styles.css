@@ -7,6 +7,7 @@ body {
     margin: 0;
     background: url('../assets/fundo.jpg') no-repeat center center fixed; /* Imagem de fundo */
     background-size: cover; /* Faz com que a imagem cubra toda a tela */
+    backdrop-filter: blur(5px); /* Efeito de embaçamento na imagem de fundo */
 }
 
 #app {
@@ -14,7 +15,8 @@ body {
     padding: 20px; /* Espaçamento interno */
     border-radius: 10px; /* Bordas arredondadas */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
-    backdrop-filter: blur(3px); /* Efeito de embaçamento reduzido */
+    position: relative; /* Necessário para que o conteúdo esteja acima do fundo */
+    z-index: 1; /* Garante que o conteúdo fique acima do fundo embaçado */
 }
 
 .logo {
@@ -53,10 +55,7 @@ button:hover {
     margin-top: 10px;
 }
 
-/* Estilo para embaçamento na tela de login e cadastro */
+/* Removido o efeito de embaçamento das telas de login e cadastro */
 .login-screen, .register-screen {
-    backdrop-filter: blur(3px); /* Efeito de embaçamento reduzido */
-    padding: 20px; /* Espaçamento interno */
-    border-radius: 10px; /* Bordas arredondadas */
-    background-color: rgba(255, 255, 255, 0.5); /* Leve transparência para as telas */
+    /* Efeito de embaçamento não é mais necessário aqui */
 }
