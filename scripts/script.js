@@ -1,6 +1,4 @@
-// Firebase Initialization
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-
+// script.js
 const auth = getAuth();
 
 function showRegister() {
@@ -29,15 +27,12 @@ function register() {
 
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Cadastro bem-sucedido
             document.getElementById("loading").style.display = "none";
             document.getElementById("registerSuccessMessage").textContent = `Cadastro concluído, ${name}!`;
             document.getElementById("registerSuccessMessage").style.display = "block";
         })
         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert("Erro: " + errorMessage);
+            alert("Erro: " + error.message);
             document.getElementById("loading").style.display = "none";
         });
 }
@@ -53,12 +48,9 @@ function login() {
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Login bem-sucedido
             alert("Login bem-sucedido!");
         })
         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert("Erro: " + errorMessage);
+            alert("Erro: " + error.message);
         });
 }
