@@ -69,7 +69,7 @@ button:hover {
 }
 
 #registerSuccessMessage {
-    color: green;
+    color: white; /* Define a mensagem como branca */
     font-size: 18px;
     margin-top: 10px;
 }
