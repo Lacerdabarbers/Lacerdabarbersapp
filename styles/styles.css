@@ -5,11 +5,16 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f5f5f5;
+    background: url('../assets/background.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 #app {
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente para destacar o conteúdo */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
@@ -21,6 +26,9 @@ input {
     margin: 10px 0;
     padding: 10px;
     width: 80%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 button {
@@ -32,6 +40,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
