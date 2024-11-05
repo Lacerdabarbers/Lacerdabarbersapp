@@ -5,15 +5,16 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: url('assets/fundo.png') no-repeat center center fixed; /* Adicione aqui o caminho da sua imagem de fundo */
-    background-size: cover; /* Isso garante que a imagem cubra todo o fundo */
+    background: url('../assets/fundo.jpg') no-repeat center center fixed; /* Imagem de fundo */
+    background-size: cover; /* Faz com que a imagem cubra toda a tela */
 }
 
 #app {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semitransparente para o conteúdo */
-    padding: 20px; /* Adiciona um espaço interno */
-    border-radius: 10px; /* Arredonda os cantos */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semitransparente */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
 .logo {
@@ -50,4 +51,9 @@ button:hover {
     color: green;
     font-size: 18px;
     margin-top: 10px;
+}
+
+/* Estilo para embaçamento */
+.login-screen, .register-screen {
+    backdrop-filter: blur(5px); /* Efeito de embaçamento */
 }
