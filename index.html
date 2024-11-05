@@ -5,24 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barbearia - Login e Cadastro</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <!-- Firebase App -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-        
-        const firebaseConfig = {
-            apiKey: "AIzaSyCfTgr7zZKs9jhHJ7DhittDeILWLNy8bf8",
-            authDomain: "emails-107af.firebaseapp.com",
-            projectId: "emails-107af",
-            storageBucket: "emails-107af.firebasestorage.app",
-            messagingSenderId: "740408050696",
-            appId: "1:740408050696:web:c6bf3dd41a0a51bae1bdbd",
-            measurementId: "G-PK2YFX9HN9"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-    </script>
 </head>
 <body>
     <div id="app">
@@ -38,7 +20,7 @@
 
         <!-- Tela de Cadastro -->
         <div class="register-screen" id="registerScreen" style="display:none;">
-            <img src="assets/logo.png" alt="Logo da Barbearia" class="logo">
+            <img src="assets/logo.png" alt="Logo da Barbearia" class="logo"> <!-- Logo adicionada aqui -->
             <h2>Cadastro</h2>
             <input type="text" id="registerName" placeholder="Nome" required>
             <input type="email" id="registerEmail" placeholder="E-mail" required>
@@ -51,6 +33,69 @@
             <button onclick="showLogin()">Voltar</button>
         </div>
     </div>
-    <script src="scripts/script.js"></script>
+    
+    <!-- Importando o Firebase e o script principal -->
+    <script type="module">
+        // Importar as funções necessárias do SDK
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCfTgr7zZKs9jhHJ7DhittDeILWLNy8bf8",
+            authDomain: "emails-107af.firebaseapp.com",
+            projectId: "emails-107af",
+            storageBucket: "emails-107af.firebasestorage.app",
+            messagingSenderId: "740408050696",
+            appId: "1:740408050696:web:c6bf3dd41a0a51bae1bdbd",
+            measurementId: "G-PK2YFX9HN9"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+
+        // Função para registrar usuário
+        async function register() {
+            const email = document.getElementById("registerEmail").value;
+            const password = document.getElementById("registerPassword").value;
+            const name = document.getElementById("registerName").value;
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                
+                // Enviar e-mail de verificação
+                await sendEmailVerification(user);
+                alert(`Cadastro concluído, ${name}! Verifique seu e-mail para validar sua conta.`);
+                
+                // Aqui você pode esconder a tela de registro ou exibir uma mensagem
+            } catch (error) {
+                console.error("Erro ao registrar:", error);
+                alert(error.message);
+            }
+        }
+
+        // Função para mostrar a tela de registro
+        function showRegister() {
+            document.getElementById("loginScreen").style.display = "none";
+            document.getElementById("registerScreen").style.display = "block";
+        }
+
+        // Função para mostrar a tela de login
+        function showLogin() {
+            document.getElementById("registerScreen").style.display = "none";
+            document.getElementById("loginScreen").style.display = "block";
+            document.getElementById("registerSuccessMessage").style.display = "none";
+            document.getElementById("loading").style.display = "none";
+        }
+
+        // Função para login (ainda não implementada)
+        function login() {
+            alert("Login simulado! Implementar lógica de autenticação.");
+        }
+    </script>
 </body>
 </html>
