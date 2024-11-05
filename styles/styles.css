@@ -15,7 +15,7 @@ body {
     padding: 20px; /* Espaçamento interno */
     border-radius: 20px; /* Bordas arredondadas */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra leve */
-    background-color: rgba(255, 255, 255, 0.5); /* Fundo branco com 50% de opacidade */
+    background-color: rgba(255, 255, 255, 0.3); /* Fundo branco com 50% de opacidade */
     position: relative; /* Necessário para que o conteúdo esteja acima do fundo */
     z-index: 1; /* Garante que o conteúdo fique acima do fundo embaçado */
 }
