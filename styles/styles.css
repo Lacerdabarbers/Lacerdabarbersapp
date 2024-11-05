@@ -5,7 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('assets/background.jpg'); /* Verifique se este caminho está correto */
+    background-image: url('assets/background.png'); /* Verifique se este caminho está correto */
     background-size: cover; /* Faz com que a imagem cubra toda a tela */
     background-position: center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Não repete a imagem */
