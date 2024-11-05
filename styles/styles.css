@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url('../assets/fundo.jpg') no-repeat center center fixed; /* Imagem de fundo */
+    background-size: cover; /* Faz com que a imagem cubra toda a tela */
+    backdrop-filter: blur(5px); /* Efeito de embaçamento na imagem de fundo */
+}
+
+#app {
+    text-align: center;
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 20px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra leve */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semitransparente */
+    position: relative; /* Necessário para que o conteúdo esteja acima do fundo */
+    z-index: 1; /* Garante que o conteúdo fique acima do fundo embaçado */
+}
+
+.logo {
+    width: 200px; /* Aumentado para um tamanho maior */
+    margin-bottom: 20px;
+}
+
+input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+}
+
+button {
+    padding: 10px;
+    width: 85%;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#loading img {
+    width: 50px;
+}
+
+#registerSuccessMessage {
+    color: green;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Removido o efeito de embaçamento das telas de login e cadastro */
+.login-screen, .register-screen {
+    /* Efeito de embaçamento não é mais necessário aqui */
+}
