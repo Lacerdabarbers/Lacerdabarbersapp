@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('assets/background.jpg'); /* Verifique se este caminho está correto */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(3px); /* Desfoque leve para o fundo */
+}
+
+#app {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo claro para o formulário */
+    border-radius: 10px; /* Para dar um visual mais agradável */
+    padding: 20px; /* Espaçamento interno */
+    position: relative; /* Para garantir que o app fique em cima do fundo */
+    z-index: 1; /* Eleva o app acima do fundo */
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.9); /* Ajuste o fundo dos inputs para contraste */
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    width: 85%;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#loading img {
+    width: 50px;
+}
+
+#registerSuccessMessage {
+    color: green;
+    font-size: 18px;
+    margin-top: 10px;
+}
