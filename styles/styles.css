@@ -5,16 +5,15 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: url('../assets/fundo.jpg') no-repeat center center fixed; /* Imagem de fundo */
-    background-size: cover; /* Faz com que a imagem cubra toda a tela */
+    background-image: url('..assets/fundo.png'); /* Substitua pelo seu arquivo de fundo */
+    background-size: cover;
 }
 
 #app {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semitransparente */
-    border-radius: 10px; /* Bordas arredondadas */
-    padding: 20px; /* Espaçamento interno */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    backdrop-filter: blur(8px); /* Aplica o efeito de desfoque ao fundo */
+    padding: 20px;
+    border-radius: 10px; /* Arredonda os cantos do app */
 }
 
 .logo {
@@ -51,9 +50,4 @@ button:hover {
     color: green;
     font-size: 18px;
     margin-top: 10px;
-}
-
-/* Estilo para embaçamento */
-.login-screen, .register-screen {
-    backdrop-filter: blur(5px); /* Efeito de embaçamento */
 }
