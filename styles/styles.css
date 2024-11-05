@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('assets/fundo.jpg'); /* Certifique-se de que o caminho está correto */
+    background-size: cover; /* Manter isso para cobrir toda a tela */
+    background-position: center; /* Alinha a imagem ao centro */
+    background-repeat: no-repeat; /* Não repetir a imagem */
+    filter: blur(3px); /* Embaçamento */
+}
+
+#app {
+    text-align: center;
+    background-color: transparent; /* Remove o quadrado branco */
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo levemente opaco */
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    width: 85%;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#loading img {
+    width: 50px;
+}
+
+#registerSuccessMessage {
+    color: green;
+    font-size: 18px;
+    margin-top: 10px;
+}
