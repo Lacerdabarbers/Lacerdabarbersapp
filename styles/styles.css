@@ -11,8 +11,8 @@ body {
 
 #app {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semitransparente */
-    border-radius: 10px; /* Bordas arredondadas */
+    /* Remover o fundo branco semitransparente */
+    /* background-color: rgba(255, 255, 255, 0.8); */
     padding: 20px; /* Espaçamento interno */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
