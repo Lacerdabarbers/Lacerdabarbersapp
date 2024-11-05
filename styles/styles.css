@@ -5,17 +5,17 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: url('../assets/fundo.jpg') no-repeat center center fixed;
-    background-size: cover;
-    filter: blur(5px); /* Aplica o desfoque na imagem de fundo */
+    background: url('../assets/fundo.jpg') no-repeat center center fixed; /* Imagem de fundo */
+    background-size: cover; /* Cobre toda a tela */
+    backdrop-filter: blur(3px); /* Leve efeito de embaçamento */
 }
 
 #app {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.3); /* Fundo semitransparente branco */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
 .logo {
@@ -30,7 +30,7 @@ input {
 }
 
 button {
-    padding: 15px; /* Aumenta o padding para tornar o botão maior */
+    padding: 15px;
     width: 85%;
     margin: 10px 0;
     background-color: #4CAF50;
@@ -38,7 +38,6 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    animation: pulse 2s infinite; /* Adiciona o efeito de pulsar */
 }
 
 button:hover {
@@ -53,22 +52,4 @@ button:hover {
     color: green;
     font-size: 18px;
     margin-top: 10px;
-}
-
-/* Estilo para embaçamento */
-.login-screen, .register-screen {
-    backdrop-filter: blur(5px); /* Efeito de embaçamento */
-}
-
-/* Efeito de pulsar */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05); /* Aumenta o tamanho no meio da animação */
-    }
-    100% {
-        transform: scale(1);
-    }
 }
