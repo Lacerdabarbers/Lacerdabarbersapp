@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barbearia - Login e Cadastro</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <!-- Firebase App -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCfTgr7zZKs9jhHJ7DhittDeILWLNy8bf8",
+            authDomain: "emails-107af.firebaseapp.com",
+            projectId: "emails-107af",
+            storageBucket: "emails-107af.firebasestorage.app",
+            messagingSenderId: "740408050696",
+            appId: "1:740408050696:web:c6bf3dd41a0a51bae1bdbd",
+            measurementId: "G-PK2YFX9HN9"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    </script>
 </head>
 <body>
     <div id="app">
@@ -20,7 +38,7 @@
 
         <!-- Tela de Cadastro -->
         <div class="register-screen" id="registerScreen" style="display:none;">
-            <img src="assets/logo.png" alt="Logo da Barbearia" class="logo"> <!-- Logo adicionada aqui -->
+            <img src="assets/logo.png" alt="Logo da Barbearia" class="logo">
             <h2>Cadastro</h2>
             <input type="text" id="registerName" placeholder="Nome" required>
             <input type="email" id="registerEmail" placeholder="E-mail" required>
@@ -29,10 +47,10 @@
             <div id="loading" style="display:none;">
                 <img src="assets/loading.gif" alt="Carregando">
             </div>
-            <p id="registerSuccessMessage" style="display:none;">Cadastro concluído!</p>
+            <p id="registerSuccessMessage" style="display:none; color: white;">Cadastro concluído!</p>
             <button onclick="showLogin()">Voltar</button>
         </div>
     </div>
-    <script type="module" src="scripts/script.js"></script> <!-- Modificado para type="module" -->
+    <script src="scripts/script.js"></script>
 </body>
 </html>
