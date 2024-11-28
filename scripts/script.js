@@ -21,7 +21,7 @@ function register() {
     }
 
     // Exibir símbolo de carregamento
-    document.getElementById("loading").style.display = "block";
+    document.getElementById("loading").style.display = "flex";
 
     // Simular atraso de 6 segundos
     setTimeout(() => {
