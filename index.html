@@ -33,6 +33,15 @@
             <p id="registerSuccessMessage" style="display:none;">Cadastro concluído!</p>
             <button onclick="showLogin()">Voltar</button>
         </div>
+
+        <!-- Tela de Agendamento -->
+        <div class="appointment-screen" id="appointmentScreen" style="display:none;">
+            <h2>Agendamento de Corte</h2>
+            <input type="date" id="appointmentDate" required>
+            <input type="time" id="appointmentTime" required>
+            <button onclick="scheduleAppointment()">Agendar</button>
+            <p id="appointmentConfirmation" style="display:none;">Seu horário foi agendado com sucesso!</p>
+        </div>
     </div>
     <script src="scripts/script.js"></script>
 </body>
