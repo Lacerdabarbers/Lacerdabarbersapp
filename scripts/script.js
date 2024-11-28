@@ -11,12 +11,17 @@ function showLogin() {
 }
 
 function register() {
+    const name = document.getElementById("registerName").value;
     const email = document.getElementById("registerEmail").value;
     const password = document.getElementById("registerPassword").value;
-    const name = document.getElementById("registerName").value;
 
     if (!validateEmail(email)) {
         alert("Por favor, insira um e-mail válido.");
+        return;
+    }
+
+    if (!name || !password) {
+        alert("Por favor, preencha todos os campos.");
         return;
     }
 
@@ -25,6 +30,19 @@ function register() {
 
     // Simular atraso de 6 segundos
     setTimeout(() => {
+        // Salvar usuário no localStorage
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const userExists = users.find((user) => user.email === email);
+
+        if (userExists) {
+            alert("Este e-mail já está cadastrado.");
+            document.getElementById("loading").style.display = "none";
+            return;
+        }
+
+        users.push({ name, email, password });
+        localStorage.setItem("users", JSON.stringify(users));
+
         document.getElementById("loading").style.display = "none";
         document.getElementById("registerSuccessMessage").textContent = `Cadastro concluído, ${name}!`;
         document.getElementById("registerSuccessMessage").style.display = "block";
@@ -37,6 +55,32 @@ function validateEmail(email) {
 }
 
 function login() {
-    // Lógica de login (pode adicionar verificação básica)
-    alert("Login simulado! Implementar lógica de autenticação.");
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    if (!validateEmail(email)) {
+        alert("Por favor, insira um e-mail válido.");
+        return;
+    }
+
+    if (!password) {
+        alert("Por favor, insira a senha.");
+        return;
+    }
+
+    // Verificar credenciais no localStorage
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find((user) => user.email === email);
+
+    if (!user) {
+        alert("E-mail não encontrado. Verifique ou cadastre-se.");
+        return;
+    }
+
+    if (user.password !== password) {
+        alert("Senha inválida. Tente novamente.");
+        return;
+    }
+
+    alert(`Bem-vindo, ${user.name}! Login realizado com sucesso.`);
 }
