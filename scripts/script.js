@@ -1,3 +1,20 @@
+const availableTimes = {
+    "09:00": false,
+    "09:30": false,
+    "10:00": false,
+    "10:30": false,
+    "11:00": false,
+    "11:30": false,
+    "12:00": false,
+    "12:30": false,
+    "13:00": false,
+    "13:30": false,
+    "14:00": false,
+    "14:30": false,
+    "15:00": false,
+    "15:30": false
+};
+
 function showRegister() {
     document.getElementById("loginScreen").style.display = "none";
     document.getElementById("registerScreen").style.display = "block";
@@ -83,33 +100,44 @@ function login() {
     }
 
     alert(`Bem-vindo, ${user.name}! Login realizado com sucesso.`);
-
-    // Esconder a tela de login e mostrar a tela de agendamento
     document.getElementById("loginScreen").style.display = "none";
     document.getElementById("appointmentScreen").style.display = "block";
+    populateAvailableTimes();
+}
+
+function populateAvailableTimes() {
+    const date = document.getElementById("appointmentDate").value;
+    const timeSelect = document.getElementById("appointmentTime");
+    
+    // Limpar as opções de horário
+    timeSelect.innerHTML = "";
+
+    // Adicionar horários disponíveis para o dia selecionado
+    for (let time in availableTimes) {
+        const option = document.createElement("option");
+        option.value = time;
+        option.textContent = `${time} - ${availableTimes[time] ? "Ocupado" : "Disponível"}`;
+        timeSelect.appendChild(option);
+    }
 }
 
 function scheduleAppointment() {
-    const appointmentDate = document.getElementById("appointmentDate").value;
-    const appointmentTime = document.getElementById("appointmentTime").value;
+    const date = document.getElementById("appointmentDate").value;
+    const time = document.getElementById("appointmentTime").value;
 
-    if (!appointmentDate || !appointmentTime) {
-        alert("Por favor, preencha todos os campos para agendar.");
+    if (!date || !time || availableTimes[time]) {
+        alert("Este horário já está ocupado ou os dados estão incompletos.");
         return;
     }
 
-    // Criar mensagem de agendamento para WhatsApp
-    const message = `Olá, gostaria de agendar um corte para o dia ${appointmentDate} às ${appointmentTime}.`;
+    // Marcar o horário como ocupado
+    availableTimes[time] = true;
 
-    // Codificar a mensagem para usar na URL do WhatsApp
-    const whatsappMessage = encodeURIComponent(message);
+    // Enviar mensagem para o WhatsApp
+    const message = `Novo agendamento de corte de cabelo!\nData: ${date}\nHorário: ${time}`;
+    const whatsappLink = `https://wa.me/5581997333714?text=${encodeURIComponent(message)}`;
 
-    // Gerar o link do WhatsApp com os dados do agendamento
-    const whatsappUrl = `https://wa.me/5581997333714?text=${whatsappMessage}`;
+    window.open(whatsappLink, "_blank");
 
-    // Abrir o link do WhatsApp
-    window.open(whatsappUrl, '_blank');
-
-    // Exibir a confirmação de agendamento na tela
     document.getElementById("appointmentConfirmation").style.display = "block";
 }
