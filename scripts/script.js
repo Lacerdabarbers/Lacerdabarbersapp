@@ -98,5 +98,18 @@ function scheduleAppointment() {
         return;
     }
 
+    // Criar mensagem de agendamento para WhatsApp
+    const message = `Olá, gostaria de agendar um corte para o dia ${appointmentDate} às ${appointmentTime}.`;
+
+    // Codificar a mensagem para usar na URL do WhatsApp
+    const whatsappMessage = encodeURIComponent(message);
+
+    // Gerar o link do WhatsApp com os dados do agendamento
+    const whatsappUrl = `https://wa.me/5581997333714?text=${whatsappMessage}`;
+
+    // Abrir o link do WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    // Exibir a confirmação de agendamento na tela
     document.getElementById("appointmentConfirmation").style.display = "block";
 }
