@@ -30,8 +30,10 @@ function register() {
 
     // Simular atraso de 6 segundos
     setTimeout(() => {
-        // Salvar usuário no localStorage
+        // Recuperar usuários existentes no localStorage
         const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Verificar se o e-mail já está cadastrado
         const userExists = users.find((user) => user.email === email);
 
         if (userExists) {
@@ -40,7 +42,10 @@ function register() {
             return;
         }
 
+        // Adicionar novo usuário ao array
         users.push({ name, email, password });
+
+        // Salvar os usuários no localStorage
         localStorage.setItem("users", JSON.stringify(users));
 
         document.getElementById("loading").style.display = "none";
@@ -68,8 +73,10 @@ function login() {
         return;
     }
 
-    // Verificar credenciais no localStorage
+    // Recuperar usuários existentes no localStorage
     const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Procurar o usuário pelo e-mail
     const user = users.find((user) => user.email === email);
 
     if (!user) {
@@ -77,39 +84,12 @@ function login() {
         return;
     }
 
+    // Verificar se a senha está correta
     if (user.password !== password) {
         alert("Senha inválida. Tente novamente.");
         return;
     }
 
-    // Sucesso no login, redirecionar para a tela de agendamento
+    // Login bem-sucedido
     alert(`Bem-vindo, ${user.name}! Login realizado com sucesso.`);
-    showAppointmentScreen(); // Função para mostrar a tela de agendamento
-}
-
-function showAppointmentScreen() {
-    // Esconde as telas anteriores e exibe a de agendamento
-    document.getElementById("loginScreen").style.display = "none";
-    document.getElementById("registerScreen").style.display = "none";
-    document.getElementById("appointmentScreen").style.display = "block";
-}
-
-function scheduleAppointment() {
-    const appointmentDate = document.getElementById("appointmentDate").value;
-    const appointmentTime = document.getElementById("appointmentTime").value;
-
-    if (!appointmentDate || !appointmentTime) {
-        alert("Por favor, selecione a data e a hora.");
-        return;
-    }
-
-    // Simular o envio do agendamento
-    document.getElementById("appointmentConfirmation").textContent = `Seu corte está agendado para ${appointmentDate} às ${appointmentTime}.`;
-    document.getElementById("appointmentConfirmation").style.display = "block";
-
-    // Aqui você pode adicionar a lógica para enviar a notificação de agendamento para você, por exemplo, por e-mail ou para um servidor.
-    // Simulação de envio:
-    setTimeout(() => {
-        alert("Agendamento realizado com sucesso! Você será notificado em breve.");
-    }, 2000);
 }
