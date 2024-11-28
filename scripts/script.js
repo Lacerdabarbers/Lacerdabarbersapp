@@ -30,10 +30,8 @@ function register() {
 
     // Simular atraso de 6 segundos
     setTimeout(() => {
-        // Recuperar usuários existentes no localStorage
+        // Salvar usuário no localStorage
         const users = JSON.parse(localStorage.getItem("users")) || [];
-
-        // Verificar se o e-mail já está cadastrado
         const userExists = users.find((user) => user.email === email);
 
         if (userExists) {
@@ -42,10 +40,7 @@ function register() {
             return;
         }
 
-        // Adicionar novo usuário ao array
         users.push({ name, email, password });
-
-        // Salvar os usuários no localStorage
         localStorage.setItem("users", JSON.stringify(users));
 
         document.getElementById("loading").style.display = "none";
@@ -73,10 +68,8 @@ function login() {
         return;
     }
 
-    // Recuperar usuários existentes no localStorage
+    // Verificar credenciais no localStorage
     const users = JSON.parse(localStorage.getItem("users")) || [];
-
-    // Procurar o usuário pelo e-mail
     const user = users.find((user) => user.email === email);
 
     if (!user) {
@@ -84,12 +77,26 @@ function login() {
         return;
     }
 
-    // Verificar se a senha está correta
     if (user.password !== password) {
         alert("Senha inválida. Tente novamente.");
         return;
     }
 
-    // Login bem-sucedido
     alert(`Bem-vindo, ${user.name}! Login realizado com sucesso.`);
+
+    // Esconder a tela de login e mostrar a tela de agendamento
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("appointmentScreen").style.display = "block";
+}
+
+function scheduleAppointment() {
+    const appointmentDate = document.getElementById("appointmentDate").value;
+    const appointmentTime = document.getElementById("appointmentTime").value;
+
+    if (!appointmentDate || !appointmentTime) {
+        alert("Por favor, preencha todos os campos para agendar.");
+        return;
+    }
+
+    document.getElementById("appointmentConfirmation").style.display = "block";
 }
