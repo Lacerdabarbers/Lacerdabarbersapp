@@ -38,7 +38,9 @@
         <div class="appointment-screen" id="appointmentScreen" style="display:none;">
             <h2>Agendamento de Corte</h2>
             <input type="date" id="appointmentDate" required>
-            <input type="time" id="appointmentTime" required>
+            <select id="appointmentTime" required>
+                <!-- Opções de horários -->
+            </select>
             <button onclick="scheduleAppointment()">Agendar</button>
             <p id="appointmentConfirmation" style="display:none;">Seu horário foi agendado com sucesso!</p>
         </div>
