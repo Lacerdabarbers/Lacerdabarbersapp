@@ -82,5 +82,34 @@ function login() {
         return;
     }
 
+    // Sucesso no login, redirecionar para a tela de agendamento
     alert(`Bem-vindo, ${user.name}! Login realizado com sucesso.`);
+    showAppointmentScreen(); // Função para mostrar a tela de agendamento
+}
+
+function showAppointmentScreen() {
+    // Esconde as telas anteriores e exibe a de agendamento
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("registerScreen").style.display = "none";
+    document.getElementById("appointmentScreen").style.display = "block";
+}
+
+function scheduleAppointment() {
+    const appointmentDate = document.getElementById("appointmentDate").value;
+    const appointmentTime = document.getElementById("appointmentTime").value;
+
+    if (!appointmentDate || !appointmentTime) {
+        alert("Por favor, selecione a data e a hora.");
+        return;
+    }
+
+    // Simular o envio do agendamento
+    document.getElementById("appointmentConfirmation").textContent = `Seu corte está agendado para ${appointmentDate} às ${appointmentTime}.`;
+    document.getElementById("appointmentConfirmation").style.display = "block";
+
+    // Aqui você pode adicionar a lógica para enviar a notificação de agendamento para você, por exemplo, por e-mail ou para um servidor.
+    // Simulação de envio:
+    setTimeout(() => {
+        alert("Agendamento realizado com sucesso! Você será notificado em breve.");
+    }, 2000);
 }
