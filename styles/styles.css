@@ -34,6 +34,29 @@ input {
     font-size: 16px;
 }
 
+/* Tornar a seleção de horário mais visível */
+input[type="time"] {
+    padding: 12px;
+    width: 80%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    font-size: 18px;
+    text-align: center;
+    appearance: none;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+input[type="date"] {
+    font-size: 18px;
+    text-align: center;
+}
+
 button {
     padding: 15px;
     width: 85%;
