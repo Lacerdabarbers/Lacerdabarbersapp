@@ -4,42 +4,49 @@ const availableTimes = [
     "15:00", "15:30"
 ];
 
-// Função para carregar horários ocupados do localStorage
+// Função para carregar horários ocupados do Firestore
 function getOccupiedTimes() {
-    return JSON.parse(localStorage.getItem("occupiedTimes")) || {};
+    return firebase.firestore().collection('appointments').get().then(snapshot => {
+        const occupied = {};
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            if (!occupied[data.date]) {
+                occupied[data.date] = [];
+            }
+            occupied[data.date].push(data.time);
+        });
+        return occupied;
+    });
 }
 
-// Função para salvar horário ocupado no localStorage
+// Função para salvar horário ocupado no Firestore
 function saveOccupiedTime(date, time) {
-    const occupied = getOccupiedTimes();
-    if (!occupied[date]) {
-        occupied[date] = [];
-    }
-    occupied[date].push(time);
-    localStorage.setItem("occupiedTimes", JSON.stringify(occupied));
+    firebase.firestore().collection('appointments').add({
+        date: date,
+        time: time
+    });
 }
 
 // Função para mostrar horários disponíveis na interface
 function populateAvailableTimes() {
     const date = document.getElementById("appointmentDate").value;
     const timeSelect = document.getElementById("appointmentTime");
-    const occupied = getOccupiedTimes();
-    const occupiedForDate = occupied[date] || [];
 
-    // Limpar opções existentes
-    timeSelect.innerHTML = "";
+    getOccupiedTimes().then(occupied => {
+        const occupiedForDate = occupied[date] || [];
+        timeSelect.innerHTML = "";
 
-    // Adicionar horários disponíveis
-    availableTimes.forEach((time) => {
-        const option = document.createElement("option");
-        option.value = time;
-        if (occupiedForDate.includes(time)) {
-            option.textContent = `${time} - Ocupado`;
-            option.disabled = true;
-        } else {
-            option.textContent = `${time} - Disponível`;
-        }
-        timeSelect.appendChild(option);
+        availableTimes.forEach((time) => {
+            const option = document.createElement("option");
+            option.value = time;
+            if (occupiedForDate.includes(time)) {
+                option.textContent = `${time} - Ocupado`;
+                option.disabled = true;
+            } else {
+                option.textContent = `${time} - Disponível`;
+            }
+            timeSelect.appendChild(option);
+        });
     });
 }
 
@@ -53,25 +60,26 @@ function scheduleAppointment() {
         return;
     }
 
-    const occupied = getOccupiedTimes();
-    if ((occupied[date] || []).includes(time)) {
-        alert("Este horário já está ocupado. Escolha outro horário.");
-        return;
-    }
+    getOccupiedTimes().then(occupied => {
+        if ((occupied[date] || []).includes(time)) {
+            alert("Este horário já está ocupado. Escolha outro horário.");
+            return;
+        }
 
-    // Salvar o horário como ocupado
-    saveOccupiedTime(date, time);
+        // Salvar o horário como ocupado
+        saveOccupiedTime(date, time);
 
-    // Mensagem de confirmação e redirecionamento para WhatsApp
-    alert(`Horário agendado com sucesso!\nData: ${date}\nHorário: ${time}`);
-    const message = `Novo agendamento de corte de cabelo!\nData: ${date}\nHorário: ${time}`;
-    const whatsappLink = `https://wa.me/5581997333714?text=${encodeURIComponent(message)}`;
-    window.open(whatsappLink, "_blank");
+        // Mensagem de confirmação e redirecionamento para WhatsApp
+        alert(`Horário agendado com sucesso!\nData: ${date}\nHorário: ${time}`);
+        const message = `Novo agendamento de corte de cabelo!\nData: ${date}\nHorário: ${time}`;
+        const whatsappLink = `https://wa.me/5581997333714?text=${encodeURIComponent(message)}`;
+        window.open(whatsappLink, "_blank");
 
-    // Atualizar a lista de horários disponíveis
-    populateAvailableTimes();
+        // Atualizar a lista de horários disponíveis
+        populateAvailableTimes();
 
-    document.getElementById("appointmentConfirmation").style.display = "block";
+        document.getElementById("appointmentConfirmation").style.display = "block";
+    });
 }
 
 // Mostrar tela de cadastro
@@ -105,23 +113,21 @@ function register() {
 
     document.getElementById("loading").style.display = "flex";
 
-    setTimeout(() => {
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-        const userExists = users.find((user) => user.email === email);
-
-        if (userExists) {
-            alert("Este e-mail já está cadastrado.");
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(userCredential => {
+            const user = userCredential.user;
+            firebase.firestore().collection('users').doc(user.uid).set({
+                name: name,
+                email: email
+            });
             document.getElementById("loading").style.display = "none";
-            return;
-        }
-
-        users.push({ name, email, password });
-        localStorage.setItem("users", JSON.stringify(users));
-
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("registerSuccessMessage").textContent = `Cadastro concluído, ${name}!`;
-        document.getElementById("registerSuccessMessage").style.display = "block";
-    }, 3000);  // Tempo reduzido para simulação de cadastro
+            document.getElementById("registerSuccessMessage").textContent = `Cadastro concluído, ${name}!`;
+            document.getElementById("registerSuccessMessage").style.display = "block";
+        })
+        .catch(error => {
+            document.getElementById("loading").style.display = "none";
+            alert(error.message);
+        });
 }
 
 // Validação de e-mail
