@@ -5,6 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barbearia - Login e Cadastro</title>
     <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- Adicionar SDK do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <script>
+        // Sua configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAAL5aFdLnBrxYDhN5iDYXyHVbSAbwId5M",
+            authDomain: "barbearia-9dc45.firebaseapp.com",
+            projectId: "barbearia-9dc45",
+            storageBucket: "barbearia-9dc45.firebasestorage.app",
+            messagingSenderId: "1055436015391",
+            appId: "1:1055436015391:web:3b5f3368ffa455366bd22a",
+            measurementId: "G-RQCFY27YTB"
+        };
+
+        // Inicializa o Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const firestore = firebase.firestore();
+
+        // Checar se o usuário está autenticado ao carregar a página
+        window.onload = () => {
+            auth.onAuthStateChanged(user => {
+                if (user) {
+                    document.getElementById("loginScreen").style.display = "none";
+                    document.getElementById("appointmentScreen").style.display = "block";
+                } else {
+                    document.getElementById("loginScreen").style.display = "block";
+                    document.getElementById("appointmentScreen").style.display = "none";
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     <div id="app">
@@ -45,6 +80,8 @@
             <p id="appointmentConfirmation" style="display:none;">Seu horário foi agendado com sucesso!</p>
         </div>
     </div>
+
+    <!-- Script de Login, Cadastro e Agendamento -->
     <script src="scripts/script.js"></script>
 </body>
 </html>
