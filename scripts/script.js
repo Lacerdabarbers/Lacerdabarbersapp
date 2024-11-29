@@ -121,7 +121,7 @@ function register() {
         document.getElementById("loading").style.display = "none";
         document.getElementById("registerSuccessMessage").textContent = `Cadastro concluído, ${name}!`;
         document.getElementById("registerSuccessMessage").style.display = "block";
-    }, 6000);
+    }, 3000);  // Tempo reduzido para simulação de cadastro
 }
 
 // Validação de e-mail
